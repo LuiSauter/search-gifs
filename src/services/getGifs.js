@@ -1,0 +1,31 @@
+import config from 'config'
+import { colorSkeleton } from 'styles/constant'
+
+const { API_KEY, API_URL } = config
+
+const fromApiResponseToGifs = apiResponse => {
+  const { data = [] } = apiResponse
+  if (apiResponse.message === 'No API key found in request') {
+    console.log(apiResponse.message)
+  } else if (data.length !== 0) {
+    const theme = { ...data }
+    colorSkeleton.map((color) => {
+      theme[color.num].theme = color
+      return theme
+    })
+    const gifs = data.map(gif => {
+      const { id, title, images, type, theme } = gif
+      const { url } = images.downsized_medium
+      return { id, title, url, type, gif, theme }
+    })
+    return gifs
+  }
+  return 'No results found'
+}
+
+export const getGifs = async ({ limit = 15, keyword = 'hack' } = {}) => {
+  const apiUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=0&rating=g&lang=en`
+  const res = await fetch(apiUrl)
+  const data = await res.json()
+  return fromApiResponseToGifs(data)
+}
