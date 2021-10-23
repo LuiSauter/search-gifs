@@ -1,3 +1,4 @@
+// import useGlobalGifs from 'hooks/useGlobalGifs'
 import { Link } from 'wouter'
 import ListOfGifs from '../../components/ListOfGifs/ListOfGifs'
 import Skeleton from '../../components/Skeleton/Skeleton'
@@ -6,8 +7,11 @@ import SearchContainer from './SearchContainer'
 
 function SearchResults ({ params }) {
   const { keyword } = params
-  const { gifs, message } = useGifs({ keyword })
-  const handleNextPage = () => {}
+  const { gifs, message, setPage } = useGifs({ keyword })
+  const handleNextPage = () => {
+    setPage(prevPage => prevPage + 1)
+  }
+
   return (
     <>
       <h3>{decodeURI(keyword)}</h3>
@@ -22,7 +26,7 @@ function SearchResults ({ params }) {
           ? <Skeleton />
           : <SearchContainer><ListOfGifs gifs={gifs} /></SearchContainer>
       }
-      <button onClick={handleNextPage}>Get next page</button>
+      <button onClick={handleNextPage}>See more</button>
     </>
   )
 }

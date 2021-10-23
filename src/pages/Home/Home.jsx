@@ -1,4 +1,4 @@
-import LazyTrending from 'components/TrendingSearches/LazyTrending'
+import LazyTrending from '../../components/TrendingSearches/LazyTrending'
 import { useState } from 'react'
 import { useLocation } from 'wouter'
 import ListOfGifs from '../../components/ListOfGifs/ListOfGifs'
