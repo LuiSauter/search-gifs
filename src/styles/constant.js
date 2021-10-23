@@ -17,20 +17,20 @@ export const colors = {
 }
 // Skeleton
 export const colorSkeleton = [
-  { num: 0, color: '#168eea' },
-  { num: 1, color: '#629aa9' },
-  { num: 2, color: '#553a99' },
-  { num: 3, color: '#fd9f3e' },
-  { num: 4, color: '#ee4f4f' },
-  { num: 5, color: '#ced7df' },
-  { num: 6, color: '#5ecc62' },
-  { num: 7, color: '#e04646' },
-  { num: 8, color: '#ffcc2f' },
-  { num: 9, color: '#168eea' },
-  { num: 10, color: '#629aa9' },
-  { num: 11, color: '#553a99' },
-  { num: 12, color: '#fd9f3e' },
-  { num: 13, color: '#ee4f4f' },
-  { num: 14, color: '#ced7df' }
+  { num: 0, color: '#168eea', size: '100px' },
+  { num: 1, color: '#ee4f4f', size: '80px' },
+  { num: 2, color: '#629aa9', size: '180px' },
+  { num: 3, color: '#553a99', size: '280px' },
+  { num: 4, color: '#fd9f3e', size: '100px' },
+  { num: 5, color: '#ced7df', size: '120px' },
+  { num: 6, color: '#5ecc62', size: '200px' },
+  { num: 7, color: '#e04646', size: '300px' },
+  { num: 8, color: '#ffcc2f', size: '240px' },
+  { num: 9, color: '#168eea', size: '110px' },
+  { num: 10, color: '#629aa9', size: '320px' },
+  { num: 11, color: '#553a99', size: '100px' },
+  { num: 12, color: '#fd9f3e', size: '190px' },
+  { num: 13, color: '#ee4f4f', size: '90px' },
+  { num: 14, color: '#ced7df', size: '200px' }
 ]
 // size and padding
