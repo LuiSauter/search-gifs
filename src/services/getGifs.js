@@ -15,16 +15,17 @@ const fromApiResponseToGifs = apiResponse => {
     })
     const gifs = data.map(gif => {
       const { id, title, images, type, theme } = gif
-      const { url } = images.downsized_medium
-      return { id, title, url, type, gif, theme }
+      const { url, height } = images.downsized_medium
+      const heightGif = `${height}px`
+      return { id, title, url, heightGif, type, gif, theme }
     })
     return gifs
   }
   return 'No results found'
 }
 
-export const getGifs = async ({ limit = 15, keyword = 'hack' } = {}) => {
-  const apiUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=0&rating=g&lang=en`
+export const getGifs = async ({ limit = 15, keyword = 'hack', page = 0 } = {}) => {
+  const apiUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${page * limit}&rating=g&lang=en`
   const res = await fetch(apiUrl)
   const data = await res.json()
   return fromApiResponseToGifs(data)
