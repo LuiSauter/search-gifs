@@ -6,7 +6,9 @@ import Category from '../Category/Category'
 export default function TrendingSearches () {
   const [trends, setTrends] = useState([])
   useEffect(() => {
-    getTrendingTerms().then(setTrends)
+    getTrendingTerms()
+      .then(setTrends)
+      .catch(err => err)
   }, [])
   return <Category name='Trends' options={trends} />
 }
