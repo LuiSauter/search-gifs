@@ -1,15 +1,27 @@
 import Gif from '../Gif/Gif'
-import GifContainer from './GifContainer'
+// import GifContainer from './GifContainer'
+import Masonry from 'react-masonry-css'
+import './masonry.css'
 
 function ListOfGifs ({ gifs }) {
+  const breakpointColumnsObj = {
+    default: 4,
+    1100: 3,
+    700: 2,
+    500: 1
+  }
   return (
-    <GifContainer>
+    <Masonry
+      breakpointCols={breakpointColumnsObj}
+      className='my-masonry-grid'
+      columnClassName='my-masonry-grid_column'
+    >
       {
-        gifs.map(gif => (
-          <Gif gif={gif} key={gif.id} />
+        gifs.map(theme => (
+          <Gif theme={theme} key={theme.id} />
         ))
       }
-    </GifContainer>
+    </Masonry>
   )
 }
 
