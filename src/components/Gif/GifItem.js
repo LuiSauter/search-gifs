@@ -2,16 +2,15 @@ import styled from 'styled-components'
 import { breakpoints, colors } from 'styles/constant'
 
 export const GifItem = styled.div`
-  width: 100%;
-  height: 370px;
   display: flex;
+  width: 100%;
+  height: ${props => props.theme.heightGif};
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   border-radius: 10px;
-  margin: auto;
-  background: ${props => props.theme.color};
-  border: 2px solid ${props => props.theme.color};
+  background: ${props => props.theme.theme.color};
+  border: 2px solid ${props => props.theme.theme.color};
   transition: transform .2s ease-in-out;
 
   &:hover {
@@ -20,7 +19,8 @@ export const GifItem = styled.div`
 
   h4 {
     background: ${colors.card};
-    margin: 0;
+    font-size: .8rem;
+    font-weight: 500;
     padding: 1rem .5rem;
     width: 100%;
     border-top-left-radius: 10px;
@@ -28,8 +28,7 @@ export const GifItem = styled.div`
   }
 
   img {
-    height: 50rem;
-    min-height: 250px;
+    height: 100%;
     width: 100%;
     object-fit: cover;
     border-bottom-left-radius: 10px;
@@ -46,24 +45,24 @@ export const GifItem = styled.div`
 
 export const GifItemSkeleton = styled.div`
   width: 100%;
-  height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: ${props => props.theme.theme.color};
 
   .title {
-    height: 20px;
+    height: 18px;
     width: 95%;
     border-radius: 10px;
     margin-bottom: 1.3rem;
-    background: ${props => props.theme.color};
+    background: ${props => props.theme.theme.color};
   }
 
   .content {
-    background: ${props => props.theme.color};
+    background: ${props => props.theme.theme.color};
     width: 95%;
-    height: 280px;
+    height: ${props => props.theme.theme.size};
     border-radius: 10px;
   }
 
