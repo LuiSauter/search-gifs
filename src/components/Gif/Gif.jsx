@@ -7,8 +7,8 @@ function Gif ({ theme }) {
   return (
     <ThemeProvider key={id} theme={theme}>
       <GifItem>
-        <h4>{title}</h4>
         <Link to={`/gif/${id}`}>
+          <h4>{title}</h4>
           <img loading='lazy' src={url} alt={title} />
         </Link>
       </GifItem>
