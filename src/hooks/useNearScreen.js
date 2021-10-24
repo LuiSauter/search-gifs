@@ -1,15 +1,21 @@
 import { useEffect, useRef, useState } from 'react'
 
-const useNearScreen = ({ distance = '100px' } = {}) => {
+const useNearScreen = ({
+  distance = '900px',
+  externalRef, once = true
+} = {}) => {
   const [isNearScreen, setIsNearScreen] = useState(false)
   const fromRef = useRef()
   useEffect(() => {
     let observer
+    const element = externalRef ? externalRef.current : fromRef.current
     const onChange = (entries, observer) => {
       const el = entries[0]
       if (el.isIntersecting) {
         setIsNearScreen(true)
-        observer.disconnect()
+        once && observer.disconnect()
+      } else {
+        !once && setIsNearScreen(false)
       }
     }
     // Resolver el valor si o si
@@ -21,7 +27,7 @@ const useNearScreen = ({ distance = '100px' } = {}) => {
       observer = new IntersectionObserver(onChange, {
         rootMargin: distance
       })
-      observer.observe(fromRef.current)
+      element && observer.observe(element)
     })
     return () => observer && observer.disconnect()
   })

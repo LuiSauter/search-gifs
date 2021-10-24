@@ -5,10 +5,8 @@ const INITIAL_PAGE = 0
 export default function useGifs ({ keyword } = { keyword: localStorage.getItem('lastKeyword') }) {
   const { gifs, setGifs } = useContext(GifsContext)
   const [page, setPage] = useState(INITIAL_PAGE)
-
   const [loadingNextPage, setLoadingNextPage] = useState(false)
   const [message, setMessage] = useState({ loading: false, message: '' })
-
   const keywordToUse = keyword || localStorage.getItem('lastKeyword') || 'pc'
 
   useEffect(() => {
