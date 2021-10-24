@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "intersection-observer": "^0.12.0",
+    "just-debounce-it": "^2.0.0",
     "react": "^17.0.2",
     "react-content-loader": "^6.0.3",
     "react-dom": "^17.0.2",
@@ -26,7 +27,8 @@
     "extends": [
       "react-app",
       "react-app/jest",
-      "./node_modules/standard/eslintrc.json"
+      "./node_modules/standard/eslintrc.json",
+      "plugin:react-hooks/recommended"
     ]
   },
   "browserslist": {
@@ -42,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.2.0",
     "standard": "^16.0.4"
   }
 }
