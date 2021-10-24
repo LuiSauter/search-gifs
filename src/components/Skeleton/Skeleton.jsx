@@ -1,14 +1,11 @@
-import { GifItemSkeleton } from 'components/Gif/GifItem'
 import { ThemeProvider } from 'styled-components'
-// import { colorSkeleton } from 'styles/constant'
+import { colorSkeleton } from 'styles/constant'
 // import GifContainer from 'components/ListOfGifs/GifContainer'
 // import useGlobalGifs from 'hooks/useGlobalGifs'
 import Masonry from 'react-masonry-css'
-import useGifs from 'hooks/useGifs'
+import { SkeletonGif } from './SkeletonGifs'
 
 function Skeleton () {
-  const { gifs } = useGifs()
-
   const breakpointColumnsObj = {
     default: 4,
     1100: 3,
@@ -22,12 +19,12 @@ function Skeleton () {
       columnClassName='my-masonry-grid_column'
     >
       {
-        gifs.map(theme => (
-          <ThemeProvider key={theme.id} theme={theme}>
-            <GifItemSkeleton key={theme.id}>
+        colorSkeleton.map(theme => (
+          <ThemeProvider key={theme.num} theme={theme}>
+            <SkeletonGif key={theme.num}>
               <div className='title' />
               <div className='content' />
-            </GifItemSkeleton>
+            </SkeletonGif>
           </ThemeProvider>
         ))
       }
