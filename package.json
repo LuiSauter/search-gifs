@@ -6,8 +6,10 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.23.0",
     "intersection-observer": "^0.12.0",
     "just-debounce-it": "^2.0.0",
+    "just-throttle": "^3.0.0",
     "react": "^17.0.2",
     "react-content-loader": "^6.0.3",
     "react-dom": "^17.0.2",
@@ -18,6 +20,7 @@
     "wouter": "^2.8.0-alpha.1"
   },
   "scripts": {
+    "deploy": "npm run test && vercel",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
