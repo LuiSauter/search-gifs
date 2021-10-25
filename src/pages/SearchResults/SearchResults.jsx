@@ -1,6 +1,7 @@
 import { Link } from 'wouter'
 import { useEffect, useRef, useCallback } from 'react'
-import debounce from 'just-debounce-it'
+// import debounce from 'just-debounce-it'
+// import throttle from 'just-throttle'
 import ListOfGifs from '../../components/ListOfGifs/ListOfGifs'
 import Skeleton from '../../components/Skeleton/Skeleton'
 import useNearScreen from 'hooks/useNearScreen'
@@ -15,13 +16,19 @@ function SearchResults ({ params }) {
     externalRef: message.loading ? null : externalRef,
     once: false
   })
-  const debounceHandleNextPage = useCallback(debounce(
-    () => setPage(prevPage => prevPage + 1), 1000),
-  [setPage])
+
+  // const debounceHandleNextPage = useCallback(throttle(
+  //   () => setPage(prevPage => prevPage + 1), 1000),
+  // [setPage]
+  // )
+
+  const throttleHandleNextPage = useCallback(() => {
+    setPage(prevPage => prevPage + 1)
+  }, [setPage])
 
   useEffect(function () {
-    if (isNearScreen) debounceHandleNextPage()
-  }, [isNearScreen, debounceHandleNextPage])
+    if (isNearScreen) throttleHandleNextPage()
+  }, [isNearScreen, throttleHandleNextPage])
   return (
     <>
       <h3>{decodeURI(keyword)}</h3>
