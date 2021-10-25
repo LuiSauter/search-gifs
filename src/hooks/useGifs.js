@@ -22,7 +22,6 @@ export default function useGifs ({ keyword } = { keyword: localStorage.getItem('
         setMessage({ loading: false, message: 'No results found' })
       }
     })
-    console.log('useEffect 1')
   }, [keyword, setGifs, keywordToUse])
 
   useEffect(() => {
@@ -33,7 +32,6 @@ export default function useGifs ({ keyword } = { keyword: localStorage.getItem('
         setGifs(prevGifs => prevGifs.concat(nextGifs))
         setLoadingNextPage(false)
       }).catch(err => err)
-    console.log('useEffect 2')
   }, [keywordToUse, page, setGifs])
 
   return { gifs, message, loadingNextPage, setPage }
