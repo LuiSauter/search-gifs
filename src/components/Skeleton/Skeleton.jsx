@@ -1,17 +1,24 @@
 import { ThemeProvider } from 'styled-components'
 import { colorSkeleton } from 'styles/constant'
-// import GifContainer from 'components/ListOfGifs/GifContainer'
-// import useGlobalGifs from 'hooks/useGlobalGifs'
 import Masonry from 'react-masonry-css'
 import { SkeletonGif } from './SkeletonGifs'
+import React from 'react'
 
 function Skeleton () {
   const breakpointColumnsObj = {
-    default: 4,
+    default: 5,
     1100: 3,
     700: 2,
     500: 1
   }
+  const skeletonRender = colorSkeleton.map(theme => (
+    <ThemeProvider key={theme.num} theme={theme}>
+      <SkeletonGif key={theme.num}>
+        <div className='title' />
+        <div className='content' />
+      </SkeletonGif>
+    </ThemeProvider>
+  ))
   return (
     <Masonry
       breakpointCols={breakpointColumnsObj}
@@ -19,17 +26,10 @@ function Skeleton () {
       columnClassName='my-masonry-grid_column'
     >
       {
-        colorSkeleton.map(theme => (
-          <ThemeProvider key={theme.num} theme={theme}>
-            <SkeletonGif key={theme.num}>
-              <div className='title' />
-              <div className='content' />
-            </SkeletonGif>
-          </ThemeProvider>
-        ))
+        skeletonRender
       }
     </Masonry>
   )
 }
 
-export default Skeleton
+export default React.memo(Skeleton)

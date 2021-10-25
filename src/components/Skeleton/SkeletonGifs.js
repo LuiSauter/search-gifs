@@ -15,11 +15,9 @@ export const SkeletonGif = styled.div`
     width: 95%;
     border-radius: 10px;
     margin-bottom: 1.3rem;
-    /* background: ${(props) => props.theme.color}; */
   }
 
   .content {
-    /* background: ${(props) => props.theme.color}; */
     width: 95%;
     height: ${(props) => props.theme.size};
     border-radius: 10px;

@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { breakpoints, colors } from 'styles/constant'
+import { breakpoints } from 'styles/constant'
 
 export const GifItem = styled.div`
   display: flex;
   width: 100%;
-  height: ${props => props.theme.heightGif};
+  /* height: ${props => props.theme.heightGif}; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -38,10 +38,6 @@ export const GifItem = styled.div`
     width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    &:hover {
-      /* background: ${colors.card}; */
-      /* display: flex; */
-    }
   }
 
   img {
