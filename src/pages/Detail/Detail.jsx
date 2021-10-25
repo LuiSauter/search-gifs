@@ -1,13 +1,14 @@
 import Gif from '../../components/Gif/Gif'
 import GifContainer from 'components/ListOfGifs/GifContainer'
-import useGlobalGifs from 'hooks/useGlobalGifs'
 import DetailItem from './DetailItem'
+import useSingleGif from 'hooks/useSingleGif'
+import { Redirect } from 'wouter'
+
 function Detail ({ params }) {
-  const gifs = useGlobalGifs()
-  const gif = gifs.find(singleGif => singleGif.id === params.id) || JSON.parse(localStorage.getItem('DetailStorage'))
-  if (gif) {
-    localStorage.setItem('DetailStorage', JSON.stringify(gif))
-  }
+  const { gif, isLoading, isError } = useSingleGif({ id: params.id })
+  if (isLoading) return 'cargando...'
+  if (isError) return <Redirect to='/404' />
+  if (!gif) return null
   return (
     <DetailItem>
       <GifContainer>
