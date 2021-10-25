@@ -7,6 +7,8 @@ import Skeleton from '../../components/Skeleton/Skeleton'
 import useNearScreen from 'hooks/useNearScreen'
 import SearchContainer from './SearchContainer'
 import useGifs from '../../hooks/useGifs'
+// import { useSEO } from 'hooks/useSEO'
+import { Helmet } from 'react-helmet'
 
 function SearchResults ({ params }) {
   const { keyword } = params
@@ -16,11 +18,9 @@ function SearchResults ({ params }) {
     externalRef: message.loading ? null : externalRef,
     once: false
   })
+  const title = gifs ? `${gifs.length} Resultados de ${keyword}` : ''
 
-  // const debounceHandleNextPage = useCallback(throttle(
-  //   () => setPage(prevPage => prevPage + 1), 1000),
-  // [setPage]
-  // )
+  // useSEO({ description: `Searching ${keyword}`, title })
 
   const throttleHandleNextPage = useCallback(() => {
     setPage(prevPage => prevPage + 1)
@@ -31,6 +31,9 @@ function SearchResults ({ params }) {
   }, [isNearScreen, throttleHandleNextPage])
   return (
     <>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <h3>{decodeURI(keyword)}</h3>
       {message.loading
         ? <Skeleton />

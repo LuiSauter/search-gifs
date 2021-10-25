@@ -5,6 +5,7 @@ import Skeleton from '../../components/Skeleton/Skeleton'
 import useGifs from '../../hooks/useGifs'
 import SearchForm from 'components/SearchForm'
 import { useCallback } from 'react'
+import { Helmet } from 'react-helmet'
 
 function Home () {
   const [, pushLocation] = useLocation()
@@ -15,20 +16,25 @@ function Home () {
   }, [pushLocation])
 
   return (
-    <div>
-      <SearchForm onSubmitForm={onSubmit} />
-      <div className='home-contain'>
-        <div>
-          <h3>last search</h3>
-          {
-            message.loading
-              ? <Skeleton />
-              : <ListOfGifs gifs={gifs} />
-          }
+    <>
+      <Helmet>
+        <title>Home | Gif</title>
+      </Helmet>
+      <div>
+        <SearchForm onSubmitForm={onSubmit} />
+        <div className='home-contain'>
+          <div>
+            <h3>last search</h3>
+            {
+              message.loading
+                ? <Skeleton />
+                : <ListOfGifs gifs={gifs} />
+            }
+          </div>
+          <LazyTrending />
         </div>
-        <LazyTrending />
       </div>
-    </div>
+    </>
   )
 }
 
