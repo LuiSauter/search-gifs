@@ -25,14 +25,6 @@ const fromApiResponseToGifs = apiResponse => {
   return 'No results found'
 }
 
-// export const getGifs = async ({ limit = 25, keyword = 'hack', page = 0 } = {}) => {
-//   const apiUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${page * limit}&rating=g&lang=en`
-//   const res = await fetch(apiUrl)
-//   const data = await res.json()
-//   console.log(data)
-//   return fromApiResponseToGifs(data)
-// }
-
 export const getGifs = async ({ limit = 25, keyword = 'hack', page = 0 } = {}) => {
   const apiUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${page * limit}&rating=g&lang=en`
   const res = await axios.get(apiUrl)
