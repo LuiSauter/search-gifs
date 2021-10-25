@@ -5,6 +5,7 @@ export const GifItem = styled.div`
   display: flex;
   width: 100%;
   /* height: ${props => props.theme.heightGif}; */
+  max-height: 300px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
