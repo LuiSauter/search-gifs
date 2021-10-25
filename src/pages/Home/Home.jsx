@@ -1,40 +1,22 @@
 import LazyTrending from '../../components/TrendingSearches/LazyTrending'
-import { useState } from 'react'
 import { useLocation } from 'wouter'
 import ListOfGifs from '../../components/ListOfGifs/ListOfGifs'
 import Skeleton from '../../components/Skeleton/Skeleton'
 import useGifs from '../../hooks/useGifs'
-import Form from './Form'
+import SearchForm from 'components/SearchForm'
+import { useCallback } from 'react'
 
 function Home () {
-  const [keyword, setKeyword] = useState('')
   const [, pushLocation] = useLocation()
   const { gifs, message } = useGifs()
 
-  const onSubmitForm = (e) => {
-    e.preventDefault()
-    if (keyword === '') return
+  const onSubmit = useCallback(({ keyword }) => {
     pushLocation(`/search/${keyword}`)
-    setKeyword('')
-  }
-
-  const handleChange = (e) => {
-    setKeyword(e.target.value)
-  }
+  }, [pushLocation])
 
   return (
     <div>
-      <Form onSubmit={onSubmitForm}>
-        <button className='buttonSearch'><b>search</b></button>
-        <input
-          className='inputSearch'
-          onChange={handleChange}
-          type='text'
-          value={keyword}
-          name='keyword'
-          placeholder='Search a gif here'
-        />
-      </Form>
+      <SearchForm onSubmitForm={onSubmit} />
       <div className='home-contain'>
         <div>
           <h3>last search</h3>
