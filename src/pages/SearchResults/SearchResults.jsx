@@ -1,27 +1,22 @@
 import { Link } from 'wouter'
 import { useEffect, useRef, useCallback } from 'react'
-// import debounce from 'just-debounce-it'
-// import throttle from 'just-throttle'
 import ListOfGifs from '../../components/ListOfGifs/ListOfGifs'
 import Skeleton from '../../components/Skeleton/Skeleton'
 import useNearScreen from 'hooks/useNearScreen'
 import SearchContainer from './SearchContainer'
 import useGifs from '../../hooks/useGifs'
-// import { useSEO } from 'hooks/useSEO'
 import { Helmet } from 'react-helmet'
+import SearchForm from 'components/SearchForm'
 
 function SearchResults ({ params }) {
-  const { keyword } = params
-  const { gifs, message, setPage } = useGifs({ keyword })
+  const { keyword, rating = 'g' } = params
+  const { gifs, message, setPage } = useGifs({ keyword, rating })
   const externalRef = useRef()
   const { isNearScreen } = useNearScreen({
     externalRef: message.loading ? null : externalRef,
     once: false
   })
   const title = gifs ? `${gifs.length} Resultados de ${keyword}` : ''
-
-  // useSEO({ description: `Searching ${keyword}`, title })
-
   const throttleHandleNextPage = useCallback(() => {
     setPage(prevPage => prevPage + 1)
   }, [setPage])
@@ -34,6 +29,7 @@ function SearchResults ({ params }) {
       <Helmet>
         <title>{title}</title>
       </Helmet>
+      <SearchForm initialKeword={keyword} initialRating={rating} />
       <h3>{decodeURI(keyword)}</h3>
       {message.loading
         ? <Skeleton />
