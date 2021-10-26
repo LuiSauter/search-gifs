@@ -30,14 +30,18 @@ function SearchResults ({ params }) {
         <title>{title}</title>
       </Helmet>
       <SearchForm initialKeword={keyword} initialRating={rating} />
-      <h3>{decodeURI(keyword)}</h3>
+      <SearchContainer>
+        <h3>{decodeURI(keyword)}</h3>
+      </SearchContainer>
       {message.loading
         ? <Skeleton />
         : (message.message !== ''
             ? (
-              <p>
-                Results not founds <Link to='/'>Search again</Link>
-              </p>
+              <SearchContainer>
+                <p>
+                  Results not founds <Link to='/'>Search again</Link>
+                </p>
+              </SearchContainer>
               )
             : (
               <>
