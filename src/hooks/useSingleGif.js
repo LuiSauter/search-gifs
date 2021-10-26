@@ -2,15 +2,12 @@ import { getSingleGif } from '../services/getSingleGif'
 import { useEffect, useState } from 'react'
 import useGifs from './useGifs'
 
-// import useGlobalGifs from 'hooks/useGlobalGifs'
-
 export default function useSingleGif ({ id }) {
   const { gifs } = useGifs()
   const gifFromCache = gifs.find(singleGif => singleGif.id === id)
   const [gif, setGifs] = useState(gifFromCache)
   const [isError, setIsError] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-
   useEffect(() => {
     if (!gif) {
       setIsLoading(true)
