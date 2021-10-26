@@ -1,19 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useLocation } from 'wouter'
+import { useForm } from './hook'
+import Form from 'pages/Home/Form'
 
-const { default: Form } = require('pages/Home/Form')
+const RATINGS = ['g', 'pg', 'pg-13', 'r']
 
-function SearchForm ({ onSubmitForm }) {
-  const [keyword, setKeyword] = useState('')
+function SearchForm ({ initialKeword = '', initialRating = 'g' }) {
+  const { keyword, times, rating, updateKeyword, updateRating } = useForm({ initialKeword, initialRating })
+
+  const [, pushLocation] = useLocation()
+
+  const handleChange = (e) => {
+    updateKeyword(e.target.value)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (keyword === '') return
-    onSubmitForm({ keyword })
-    setKeyword('')
+    pushLocation(`/search/${keyword}/${rating}`)
   }
 
-  const handleChange = (e) => {
-    setKeyword(e.target.value)
+  const handleChangeRating = (e) => {
+    updateRating(e.target.value)
   }
 
   return (
@@ -27,6 +34,16 @@ function SearchForm ({ onSubmitForm }) {
         name='keyword'
         placeholder='Search a gif here'
       />
+      <select
+        required
+        name='selected'
+        value={rating}
+        onChange={handleChangeRating}
+      >
+        <option value='' disabled>Rating type</option>
+        {RATINGS.map(rating => <option key={rating}>{rating}</option>)}
+      </select>
+      <small>{times}</small>
     </Form>
   )
 }

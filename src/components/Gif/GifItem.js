@@ -5,7 +5,7 @@ export const GifItem = styled.div`
   display: flex;
   width: 100%;
   /* height: ${props => props.theme.heightGif}; */
-  max-height: 300px;
+  max-height: 400px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -43,7 +43,9 @@ export const GifItem = styled.div`
 
   img {
     height: ${props => props.theme.heightGif};
+    /* min-height: 350px; */
     width: 100%;
+    /* max-height: 300px; */
     object-fit: cover;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
