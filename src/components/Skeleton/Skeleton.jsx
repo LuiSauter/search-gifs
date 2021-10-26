@@ -7,7 +7,7 @@ import React from 'react'
 function Skeleton () {
   const breakpointColumnsObj = {
     default: 5,
-    1100: 3,
+    1300: 3,
     700: 2,
     500: 1
   }

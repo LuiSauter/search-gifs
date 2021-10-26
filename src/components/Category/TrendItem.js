@@ -1,11 +1,17 @@
 import styled from 'styled-components'
-import { colors } from '../../styles/constant'
 
 const TrendItemLi = styled.li`
-  /* background-color: red; */
   background: ${props => props.theme.color};
-  /* color: ${colors.background}; */
-  /* filter: contrast(90%); */
+  border-radius: 5px;
+  &:hover {
+    background: ${props => props.theme.color + 80};
+  }
+  a {
+    color: #fff;
+    filter: drop-shadow(0px 0px 9px #000);
+    font-weight: 700;
+    font-size: .99rem;
+  }
 `
 
 export default TrendItemLi

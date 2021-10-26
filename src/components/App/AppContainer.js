@@ -2,23 +2,21 @@ import styled from 'styled-components'
 import { breakpoints, colors } from '../../styles/constant'
 
 const AppContainer = styled.div`
-  width: 95%;
+  width: 100%;
   margin: auto;
   color: ${colors.colorWhite};
 
   a {
-    color: ${colors.colorBlue};
     text-decoration: none;
-    margin-right: 10px;
     color: ${colors.colorWhite};
+    /* font-weight: bold; */
     &:hover {
-      color: ${colors.colorBlue};
     }
   }
 
   .home-contain {
     display: grid;
-    grid-template-columns: 5fr 1fr;
+    grid-template-columns: 4fr 1fr;
     width: 90%;
     margin: 0 auto;
 

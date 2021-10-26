@@ -5,6 +5,7 @@ import Category from '../Category/Category'
 // Lo llama LazyTrending dinamicamente
 export default function TrendingSearches () {
   const [trends, setTrends] = useState([])
+  // const [loading, setLoading] = useState(false)
   useEffect(() => {
     getTrendingTerms()
       .then(setTrends)
