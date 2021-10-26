@@ -16,7 +16,8 @@ const fromApiResponseToGifs = apiResponse => {
     })
     const gifs = data.map(gif => {
       const { id, title, images, type, theme } = gif
-      const { url, height } = images.downsized_medium
+      const { url } = images.fixed_width
+      const { height } = images.downsized_medium
       const heightGif = `${height}px`
       return { id, title, url, heightGif, type, gif, theme }
     })
@@ -25,8 +26,8 @@ const fromApiResponseToGifs = apiResponse => {
   return 'No results found'
 }
 
-export const getGifs = async ({ limit = 25, keyword = 'hack', page = 0 } = {}) => {
-  const apiUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${page * limit}&rating=g&lang=en`
+export const getGifs = async ({ limit = 25, keyword = 'hack', rating = 'g', page = 0 } = {}) => {
+  const apiUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${page * limit}&rating=${rating}&lang=en`
   const res = await axios.get(apiUrl)
   const { data } = res
   return await fromApiResponseToGifs(data)

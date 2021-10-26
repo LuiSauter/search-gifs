@@ -9,7 +9,7 @@ const fromApiResponseToGif = apiResponse => {
   const theme = { ...data }
   theme.theme = { num: 0, color: '#2d364c', size: '200px' }
   const { id, title, images, type } = theme
-  const { url, height } = images.downsized_medium
+  const { url, height } = images.original
   const heightGif = `${height}px`
   return { id, title, url, heightGif, type, theme }
 }
