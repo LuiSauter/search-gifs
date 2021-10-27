@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet'
 import SearchForm from 'components/SearchForm'
 
 function SearchResults ({ params }) {
-  const { keyword, rating = 'g' } = params
+  const { keyword = '', rating = 'g' } = params
   const { gifs, message, setPage } = useGifs({ keyword, rating })
   const externalRef = useRef()
   const { isNearScreen } = useNearScreen({
@@ -29,12 +29,12 @@ function SearchResults ({ params }) {
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <SearchForm initialKeword={keyword} initialRating={rating} />
+      <SearchForm initialKeyword={keyword} initialRating={rating} />
       <SearchContainer>
         <h3>{decodeURI(keyword)}</h3>
       </SearchContainer>
       {message.loading
-        ? <Skeleton />
+        ? <SearchContainer><Skeleton /></SearchContainer>
         : (message.message !== ''
             ? (
               <SearchContainer>
