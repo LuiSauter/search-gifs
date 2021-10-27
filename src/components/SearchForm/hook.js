@@ -6,12 +6,13 @@ const { UPDATE_KEYWORD, UPDATE_RATING } = ACTIONS
 const ACTIONS_REDUCERS = {
   [UPDATE_KEYWORD]: (state, action) => ({
     ...state,
-    keyword: action.payload,
-    times: state.times + 1
+    keyword: action.payload.keyword,
+    times: action.payload.times
   }),
   [UPDATE_RATING]: (state, action) => ({
     ...state,
-    rating: action.payload
+    rating: action.payload.rating,
+    times: action.payload.times
   })
 }
 
@@ -25,24 +26,23 @@ export default function useForm ({
   initialRating = 'g'
 } = {}) {
   const [state, dispatch] = useReducer(reducer, {
-    keyword: decodeURIComponent(initialKeyword),
+    keyword: decodeURI(initialKeyword),
     rating: initialRating,
     times: 0
   })
 
   const { keyword, rating, times } = state
-
   const updateKeyword = (keyword) => {
     dispatch({
       type: UPDATE_KEYWORD,
-      payload: keyword
+      payload: { keyword, times: keyword.length === 0 ? 0 : keyword.length + 1 }
     })
   }
 
   const updateRating = (rating) => {
     dispatch({
       type: UPDATE_RATING,
-      payload: rating
+      payload: { rating, times: times + 1 }
     })
   }
 

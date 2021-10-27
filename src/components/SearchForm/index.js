@@ -6,7 +6,7 @@ import Form from '../../pages/Home/Form'
 
 const RATINGS = ['g', 'pg', 'pg-13', 'r']
 
-function SearchForm ({ initialKeyword = '', initialRating = 'g' }) {
+function SearchForm ({ initialKeyword, initialRating }) {
   const { keyword, times, rating, updateKeyword, updateRating } = useForm({ initialKeyword, initialRating })
 
   const [, pushLocation] = useLocation()
@@ -36,6 +36,7 @@ function SearchForm ({ initialKeyword = '', initialRating = 'g' }) {
         placeholder='Search a gif here'
       />
       <select
+        className='selectSearch'
         required
         name='selected'
         value={rating}
