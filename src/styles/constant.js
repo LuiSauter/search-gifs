@@ -6,7 +6,6 @@ export const breakpoints = {
   desktop: '1200px'
 }
 // fonts
-
 // colors
 export const colors = {
   background: '#1f2028',
@@ -43,4 +42,5 @@ export const colorSkeleton = [
   { num: 23, color: '#fd9f3e', size: '110px' },
   { num: 24, color: '#00d1b2', size: '320px' }
 ]
-// size and padding
+// error page
+export const gifsErrors = ['hStvd5LiWCFzYNyxR4', 'd2jjuAZzDSVLZ5kI', 'Bp3dFfoqpCKFyXuSzP', 'mGbJmiNXqMTXbFWvCH', 'hv5AEBpH3ZyNoRnABG', 'hLwSzlKN8Fi6I', '3o6Zt6ML6BklcajjsA', 'Q61LJj43H48z1FIK4X', 'QARvzniFRIIyELxRm3', 'KA593kO0JvXMs', 'AgPiUxdXWlSEig908v', 'oYQ9HRm5Mo7VXeMNVR', 'oYQ9HRm5Mo7VXeMNVR', 'dsWOUTBz5aae8ET8Ss', 'UHAYP0FxJOmFBuOiC2', 'lnPZrx9J2FUvviL1mv', '13GIgrGdslD9oQ', 'aNqEFrYVnsS52']
