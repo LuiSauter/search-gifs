@@ -1,9 +1,8 @@
-import Gif from '../../components/Gif/Gif'
-import GifContainer from 'components/ListOfGifs/GifContainer'
 import DetailItem from './DetailItem'
 import useSingleGif from 'hooks/useSingleGif'
 import { Redirect } from 'wouter'
 import { Helmet } from 'react-helmet'
+import { ThemeProvider } from 'styled-components'
 
 function Detail ({ params }) {
   const { gif, isLoading, isError } = useSingleGif({ id: params.id })
@@ -22,12 +21,22 @@ function Detail ({ params }) {
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <DetailItem>
-        <GifContainer>
-          <Gif theme={gif} />
-        </GifContainer>
-        <a href={gif.url} target='_blank' rel='noreferrer'>See more</a>
-      </DetailItem>
+      <ThemeProvider key={gif.id} theme={gif}>
+        <DetailItem>
+          <div className='detail-container'>
+            <h4>{title}</h4>
+            <div className='detail-container__img'>
+              <img
+                loading='lazy'
+                src={gif.gif.images.downsized_medium.url}
+                // width={gif.gif.images.downsized_medium.width}
+                alt={title}
+              />
+            </div>
+            <a href={gif.url} target='_blank' rel='noreferrer'>See more</a>
+          </div>
+        </DetailItem>
+      </ThemeProvider>
     </>
   )
 }
