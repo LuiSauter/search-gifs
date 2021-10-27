@@ -3,13 +3,12 @@ import { breakpoints, colors } from '../../styles/constant'
 
 const AppContainer = styled.div`
   width: 100%;
+  height: 100vh;
   margin: auto;
   color: ${colors.colorWhite};
-
   a {
     text-decoration: none;
     color: ${colors.colorWhite};
-    /* font-weight: bold; */
     &:hover {
     }
   }
@@ -23,6 +22,13 @@ const AppContainer = styled.div`
     @media screen and (max-width:${breakpoints.laptop}) {
       grid-template-columns: 1fr;
     }
+  }
+
+  .error-page {
+    background-image: url('https://media.giphy.com/media/d2jjuAZzDSVLZ5kI/giphy.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(3px) brightness(0.7);
   }
 
 `
