@@ -5,15 +5,23 @@ const Form = styled.form`
   text-align: center;
   width: 100%;
   margin: 1rem 0;
-  .inputSearch, .buttonSearch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: center; */
+  small {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: .6rem .4rem;
+    border: 2px solid ${colors.colorBlue};
+  }
+  .inputSearch, .buttonSearch, .selectSearch {
     font-size: 1rem;
     border: none;
     outline: none;
   }
 
   .inputSearch {
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
     padding: .6rem .2rem;
   }
 
@@ -24,6 +32,16 @@ const Form = styled.form`
     color: ${colors.background};
     cursor: pointer;
     padding: .6rem .8rem;
+  }
+
+  .selectSearch {
+    /* border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px; */
+    width: 50px;
+    height: auto;
+    text-align: center;
+    background: ${colors.colorBlue};
+    padding: .6rem 0rem;
   }
 `
 
