@@ -9,17 +9,12 @@ export default function ErrorPage () {
     return `https://media.giphy.com/media/${gifsErrors[Math.floor(Math.random() * gifsErrors.length) + 1]}/giphy.gif`
   }
 
-  console.log(gifsErrors)
-
   return (
     <>
       <Helmet>
         <title>Error 404 | Giffy</title>
       </Helmet>
       <ErrorContainer>
-        {/* <div className='error-sticky'>
-          asdas
-        </div> */}
         <div className='error-gif' />
         <SearchForm />
         <div className='page-error'>
