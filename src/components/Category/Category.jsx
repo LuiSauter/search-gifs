@@ -3,7 +3,6 @@ import TrendItemLi from './TrendItem'
 import UlCategory from './UlCategory'
 
 function Category ({ name, options = [] }) {
-  console.log(options)
   return (
     <UlCategory>
       <h3>{name}</h3>

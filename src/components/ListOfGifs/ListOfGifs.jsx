@@ -1,5 +1,4 @@
 import Gif from '../Gif/Gif'
-// import GifContainer from './GifContainer'
 import Masonry from 'react-masonry-css'
 import './masonry.css'
 
