@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.23.0",
     "intersection-observer": "^0.12.0",
+    "jsonwebtoken": "^8.5.1",
     "just-debounce-it": "^2.0.0",
     "just-throttle": "^3.0.0",
     "react": "^17.0.2",
