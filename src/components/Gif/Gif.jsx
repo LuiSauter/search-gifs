@@ -1,3 +1,4 @@
+import Fav from 'components/Fav'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { Link } from 'wouter'
@@ -7,6 +8,7 @@ function Gif ({ theme }) {
   const { id, title, url } = theme
   const gifRender = (
     <GifItem>
+      <Fav id={id} />
       <Link to={`/gif/${id}`}>
         <h4>{title}</h4>
         <img loading='lazy' src={url} alt={title} />

@@ -13,6 +13,12 @@ export const GifItem = styled.div`
   transition: transform .2s ease-in-out;
   overflow: hidden;
   position: relative;
+  button {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    z-index: 1;
+  }
   a {
     height: ${props => props.theme.heightGif};
     margin: auto;

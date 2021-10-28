@@ -8,7 +8,6 @@ const Form = styled.form`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /* align-items: center; */
   small {
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
@@ -24,7 +23,6 @@ const Form = styled.form`
   .inputSearch {
     padding: .6rem .2rem;
   }
-
   .buttonSearch {
     background: ${colors.colorBlue};
     border-bottom-left-radius: 10px;
@@ -33,10 +31,7 @@ const Form = styled.form`
     cursor: pointer;
     padding: .6rem .8rem;
   }
-
   .selectSearch {
-    /* border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px; */
     width: 50px;
     height: auto;
     text-align: center;
