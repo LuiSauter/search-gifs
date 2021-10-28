@@ -1,7 +1,6 @@
 import React from 'react'
 import { useLocation } from 'wouter'
 import useForm from './hook'
-// import Form from 'pages/Home/Form'
 import Form from '../../pages/Home/Form'
 
 const RATINGS = ['g', 'pg', 'pg-13', 'r']
