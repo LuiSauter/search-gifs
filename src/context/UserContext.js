@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { getFavs } from 'services/getFavs'
 
 const Context = React.createContext({})
-export default Context
 
 export function UserContextProvider ({ children }) {
   const [favs, setFavs] = useState([])
@@ -10,8 +9,12 @@ export function UserContextProvider ({ children }) {
 
   useEffect(() => {
     if (!jwt) return setFavs([])
-    getFavs({ jwt })
-      .then(setFavs)
+    getFavs({ jwt }).then(fav => {
+      fav.map(f => {
+        setFavs(prv => [...prv, f.fav])
+        return f
+      })
+    })
   }, [jwt])
 
   return (
@@ -26,3 +29,5 @@ export function UserContextProvider ({ children }) {
     </Context.Provider>
   )
 }
+
+export default Context
