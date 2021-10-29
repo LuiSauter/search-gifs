@@ -3,4 +3,4 @@ export const ACTIONS = {
   UPDATE_RATING: '@update_rating'
 }
 
-export const ENDPOINT = 'https://localhost:4000'
+export const ENDPOINT = 'http://localhost:4000/api'
