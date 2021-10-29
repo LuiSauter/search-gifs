@@ -1,4 +1,4 @@
-import Fav from 'components/Fav'
+import Fav from '../Fav/index'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { Link } from 'wouter'
