@@ -17,6 +17,7 @@ function SearchResults ({ params }) {
     once: false
   })
   const title = gifs ? `${gifs.length} Resultados de ${keyword}` : ''
+
   const throttleHandleNextPage = useCallback(() => {
     setPage(prevPage => prevPage + 1)
   }, [setPage])
