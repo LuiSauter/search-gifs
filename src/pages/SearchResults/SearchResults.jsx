@@ -16,7 +16,7 @@ function SearchResults ({ params }) {
     externalRef: message.loading ? null : externalRef,
     once: false
   })
-  const title = gifs ? `${gifs.length} Resultados de ${keyword}` : ''
+  const title = gifs ? `${gifs.length} Resultados de ${decodeURI(keyword)}` : ''
 
   const throttleHandleNextPage = useCallback(() => {
     setPage(prevPage => prevPage + 1)
