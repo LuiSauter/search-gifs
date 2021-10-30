@@ -1,26 +1,44 @@
+import { useState } from 'react'
+
+// import Modal from '../Modal/index'
 import useUser from 'hooks/useUser'
-import { useLocation } from 'wouter'
+import Login from '../Login/Login'
+import ModalPortal from '../Modal/index'
 
 function Fav ({ id }) {
-  const { isLogged, favs, addFav } = useUser()
-  const [, navigate] = useLocation()
+  const { isLogged, favs, addFav, delFav } = useUser()
+  const [showModal, setShowModal] = useState(false)
+
   const isFaved = favs.find(favId => favId === id)
 
   const handleClick = () => {
-    if (!isLogged) return navigate('/login')
-    addFav({ id })
+    typeof isFaved !== 'undefined'
+      ? delFav({ id })
+      : addFav({ id })
+    if (!isLogged) return setShowModal(true)
+  }
+
+  const handleClose = () => {
+    setShowModal(false)
   }
 
   const [label, emoji] = typeof isFaved !== 'undefined'
-    ? ['Remove Gif from favorites', 'X']
-    : ['Add gif to favorites', 'fav']
+    ? ['Remove Gif from favorites', 'heart fas']
+    : ['Add gif to favorites', 'inHeart far']
 
   return (
-    <button onClick={handleClick}>
-      <span role='img' aria-label={label}>
-        {emoji}
-      </span>
-    </button>
+    <>
+      <button className='fav-btn' onClick={handleClick}>
+        <span role='img' aria-label={label}>
+          <i className={emoji + ' fa-heart'} />
+        </span>
+      </button>
+      {showModal && (
+        <ModalPortal onClose={handleClose}>
+          <Login />
+        </ModalPortal>
+      )}
+    </>
   )
 }
 
