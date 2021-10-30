@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from 'styles/constant'
+import { breakpoints, colors } from 'styles/constant'
 
 const LoginStyle = styled.div`
   width: 90%;
@@ -7,6 +7,8 @@ const LoginStyle = styled.div`
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   margin: auto;
+  padding: 1rem 0;
+  color: white;
   form {
     max-width: 400px;
     margin: 1rem auto;
@@ -23,11 +25,17 @@ const LoginStyle = styled.div`
       margin-bottom: 1rem;
       height: 2.2rem;
       width: 100%;
+      border: none;
+      outline: none;
       border-radius: 10px;
       font-size: 1.1rem;
       padding: 0 1rem;
+      &:focus {
+        box-shadow: 0px 0px 1px 4px ${colors.colorBlue};
+      }
     }
-    button {
+    .login-btn {
+      position: relative;
       background-color: ${colors.colorBlue};
       border: none;
       cursor: pointer;
@@ -35,16 +43,21 @@ const LoginStyle = styled.div`
       border-radius: 10px;
       height: 2.2rem;
       font-size: 1.1rem;
+      margin: auto;
+      outline: none;
       &:hover {
         background-color: ${colors.colorBlue}aa;
       }
       &:active {
         background-color: ${colors.colorBlue}dd;
       }
+      &:focus {
+        box-shadow: 0px 0px 1px 4px ${colors.colorWhite};
+      }
     }
   }
   .login-hero {
-    width: 100%;
+    margin: auto;
     object-fit: cover;
     img {
       max-width: 380px;
@@ -54,7 +67,7 @@ const LoginStyle = styled.div`
     }
   }
 
-  @media screen and (max-width: 790px) {
+  @media screen and (max-width: ${breakpoints.laptop}) {
     grid-template-columns: 1fr;
     .login-hero {
       img {

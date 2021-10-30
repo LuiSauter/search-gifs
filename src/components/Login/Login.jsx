@@ -11,12 +11,12 @@ function Login () {
   const [, navigate] = useLocation()
 
   useEffect(() => {
+    console.log(isLogged)
     if (isLogged) navigate('/')
   }, [isLogged, navigate])
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(username, password)
     login({ username, password })
     // setPassword('')
     // setUsername('')
@@ -48,7 +48,7 @@ function Login () {
                 value={password}
               />
             </label>
-            <button>Login</button>
+            <button className='login-btn'>Login</button>
           </form>
         </LoginStyle>}
       {
