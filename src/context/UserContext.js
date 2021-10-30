@@ -11,8 +11,11 @@ export function UserContextProvider ({ children }) {
     if (!jwt) return setFavs([])
     getFavs({ jwt }).then(fav => {
       fav.map(f => {
-        setFavs(prv => [...prv, f.fav])
-        return f
+        const newFav = {
+          fav: f.fav,
+          id: f.id
+        }
+        return setFavs(prv => [...prv, newFav])
       })
     })
   }, [jwt])
