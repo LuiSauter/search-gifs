@@ -30,7 +30,7 @@ const UlCategory = styled.div`
   }
   @media screen and (min-width: ${breakpoints.laptop}) {
     ul {
-      padding-left: 2rem;
+      padding-left: .2rem;
     }
 
     h3 {

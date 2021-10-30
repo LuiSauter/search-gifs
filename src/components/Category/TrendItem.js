@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const TrendItemLi = styled.li`
   background: ${props => props.theme.color};
-  border-radius: 5px;
+  border-radius: 4px;
   &:hover {
     background: ${props => props.theme.color + 80};
   }
