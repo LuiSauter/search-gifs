@@ -17,7 +17,7 @@ const fromApiResponseToGifs = apiResponse => {
     const gifs = data.map(gif => {
       const { id, title, images, type, theme } = gif
       const { url } = images.fixed_width
-      const { height } = images.downsized_medium
+      const { height } = images.preview
       const heightGif = `${height}px`
       return { id, title, url, heightGif, type, gif, theme }
     })
