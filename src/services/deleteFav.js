@@ -13,7 +13,6 @@ export const deleteFav = async ({ id, jwt }) => {
     }
     const res = await axios.delete(`${ENDPOINT}/favs/${id}`, config)
     const { data } = res
-    console.log(data)
     return data
   } catch (error) {
     console.error(error)
