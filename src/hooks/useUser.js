@@ -2,6 +2,7 @@ import { useCallback, useContext, useState } from 'react'
 import { loginService } from 'services/loginService'
 import Context from 'context/UserContext'
 import { addFavService } from 'services/addFavService'
+import { deleteFav } from 'services/deleteFav'
 
 export default function useUser () {
   const { jwt, setJWT, favs, setFavs } = useContext(Context)
@@ -29,6 +30,17 @@ export default function useUser () {
       .catch(err => console.error(err))
   }, [jwt, setFavs])
 
+  const delFav = useCallback(({ id }) => {
+    console.log(id, 'iddd')
+    deleteFav({ id, jwt })
+      .then(() => {
+        console.log(id, 'favvv id')
+        const newFav = favs.filter(fav => fav !== id)
+        setFavs(prevFav => [...prevFav, newFav])
+        console.log(newFav)
+      })
+  }, [favs, jwt, setFavs])
+
   const logout = useCallback(() => {
     window.sessionStorage.removeItem('jwt')
     setJWT(null)
@@ -36,6 +48,7 @@ export default function useUser () {
 
   return {
     addFav,
+    delFav,
     favs,
     isLogged: Boolean(jwt),
     login,
