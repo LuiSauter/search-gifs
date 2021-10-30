@@ -6,26 +6,22 @@ import Login from '../Login/Login'
 import ModalPortal from '../Modal/index'
 
 function Fav ({ id }) {
-  const { isLogged, favs, addFav, delFav } = useUser()
+  const { isLogged, favs, addFav } = useUser()
   const [showModal, setShowModal] = useState(false)
-
-  const isFaved = favs.find(favId => favId === id)
+  const isFaved = favs.some(favId => favId.fav === id)
 
   const handleClick = () => {
-    typeof isFaved !== 'undefined'
-      ? delFav({ id })
-      : addFav({ id })
     if (!isLogged) return setShowModal(true)
+    addFav({ id })
   }
 
   const handleClose = () => {
     setShowModal(false)
   }
 
-  const [label, emoji] = typeof isFaved !== 'undefined'
+  const [label, emoji] = isFaved
     ? ['Remove Gif from favorites', 'heart fas']
     : ['Add gif to favorites', 'inHeart far']
-
   return (
     <>
       <button className='fav-btn' onClick={handleClick}>
