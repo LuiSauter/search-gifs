@@ -23,22 +23,23 @@ export default function useUser () {
   }, [setJWT])
 
   const addFav = useCallback(({ id }) => {
-    addFavService({ id, jwt })
-      .then(favorite => {
-        setFavs(prevFav => [...prevFav, favorite.fav])
-      })
-      .catch(err => console.error(err))
-  }, [jwt, setFavs])
-
-  const delFav = useCallback(({ id }) => {
-    console.log(id, 'iddd')
-    deleteFav({ id, jwt })
-      .then(() => {
-        console.log(id, 'favvv id')
-        const newFav = favs.filter(fav => fav !== id)
-        setFavs(prevFav => [...prevFav, newFav])
-        console.log(newFav)
-      })
+    const favExist = favs.some(favos => favos.fav === id)
+    const favorito = favs.find(fa => fa.fav === id)
+    if (favExist) {
+      const newFavs = favs.filter(fav => fav.fav !== id)
+      setFavs(newFavs)
+      deleteFav({ id: favorito.id, jwt })
+    } else {
+      addFavService({ id, jwt })
+        .then(favorite => {
+          const newFav = {
+            fav: favorite.fav,
+            id: favorite.id
+          }
+          setFavs(prevFav => [...prevFav, newFav])
+        })
+        .catch(err => console.error(err))
+    }
   }, [favs, jwt, setFavs])
 
   const logout = useCallback(() => {
@@ -48,7 +49,6 @@ export default function useUser () {
 
   return {
     addFav,
-    delFav,
     favs,
     isLogged: Boolean(jwt),
     login,
