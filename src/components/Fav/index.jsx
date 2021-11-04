@@ -4,18 +4,23 @@ import { useState } from 'react'
 import useUser from 'hooks/useUser'
 import Login from '../Login/Login'
 import ModalPortal from '../Modal/index'
+import FavStyle from './FavStyle'
 
-function Fav ({ id }) {
+function Fav ({ id, title }) {
   const { isLogged, favs, addFav } = useUser()
   const [showModal, setShowModal] = useState(false)
   const isFaved = favs.some(favId => favId.fav === id)
 
   const handleClick = () => {
     if (!isLogged) return setShowModal(true)
-    addFav({ id })
+    addFav({ id, title })
   }
 
   const handleClose = () => {
+    setShowModal(false)
+  }
+
+  const handleLogin = () => {
     setShowModal(false)
   }
 
@@ -24,14 +29,14 @@ function Fav ({ id }) {
     : ['Add gif to favorites', 'inHeart far']
   return (
     <>
-      <button className='fav-btn' onClick={handleClick}>
+      <FavStyle className='fav-btn' onClick={handleClick}>
         <span role='img' aria-label={label}>
           <i className={emoji + ' fa-heart'} />
         </span>
-      </button>
+      </FavStyle>
       {showModal && (
         <ModalPortal onClose={handleClose}>
-          <Login />
+          <Login onLogin={handleLogin} />
         </ModalPortal>
       )}
     </>
