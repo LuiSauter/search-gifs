@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, colors } from 'styles/constant'
+import { breakpoints } from 'styles/constant'
 
 export const GifItem = styled.div`
   display: flex;
@@ -20,27 +20,6 @@ export const GifItem = styled.div`
     border: none;
     background-color: transparent;
     transition: transform .4s;
-    span {
-      i {
-        font-size: 1.5rem;
-        color: ${colors.colorWhite};
-        cursor: pointer;
-        &:hover {
-          transform: scale(1.08);
-          color: #FF5151;
-          .inHeart {
-          }
-        }
-      }
-      .heart {
-        color: #FF5151;
-        transition: filter .5s ;
-        &:hover {
-          color: #FF5151;
-          filter: drop-shadow(0px 0px 5px #ee5050cc);
-        }
-      }
-    }
   }
   a {
     height: ${props => props.theme.heightGif};
@@ -52,19 +31,17 @@ export const GifItem = styled.div`
       h4 {
         display: block;
         background: linear-gradient(rgba(0, 0, 0, 0), ${props => props.theme.theme.color}91 100%);
-        filter: contrast(5);
       }
     }
   }
   h4 {
-    display: none;
+    background: linear-gradient(rgba(0, 0, 0, 0), #0000007d 100%);
     position: absolute;
     bottom: 0;
-    font-size: .9rem;
-    font-weight: 700;
-    padding: .4rem 2.2rem .4rem .3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: .4rem 2.2rem .4rem .4rem;
     width: 100%;
-    text-shadow: 1px 1px 2px #222;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }

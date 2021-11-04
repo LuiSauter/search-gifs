@@ -4,7 +4,7 @@ import './masonry.css'
 
 function ListOfGifs ({ gifs }) {
   const breakpointColumnsObj = {
-    default: 5,
+    default: 4,
     1300: 3,
     700: 2,
     500: 1

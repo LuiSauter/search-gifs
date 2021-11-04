@@ -8,7 +8,7 @@ function Gif ({ theme }) {
   const { id, title, url } = theme
   const gifRender = (
     <GifItem>
-      <Fav id={id} />
+      <Fav id={id} title={title} />
       <Link to={`/gif/${id}`}>
         <h4>{title}</h4>
         <img loading='lazy' src={url} alt={title} />
