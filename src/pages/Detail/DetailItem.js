@@ -16,9 +16,31 @@ const DetailItem = styled.div`
       margin-top: 1rem ;
       border-radius: 10px;
       overflow: hidden;
+      position: relative;
       img {
         width: 100%;
         height: 100%;
+      }
+      .img-hover {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        li {
+          list-style: none;
+          text-align: center;
+          font-size: .92rem;
+        }
+      }
+      &:hover {
+        .img-hover {
+          display: flex;
+          background-color: #22222291;
+        }
       }
     }
     h4 {

@@ -3,7 +3,7 @@ import useSingleGif from 'hooks/useSingleGif'
 import { Redirect } from 'wouter'
 import { Helmet } from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
-import Fav from 'components/Fav'
+import Fav from '../../components/Fav/index'
 
 function Detail ({ params }) {
   const { gif, isLoading, isError } = useSingleGif({ id: params.id })
@@ -32,6 +32,11 @@ function Detail ({ params }) {
                 src={gif.gif.images.downsized_medium.url}
                 alt={title}
               />
+              <ul className='img-hover'>
+                <li>Type: {gif.gif.type}</li>
+                <li>{gif.gif.username}</li>
+                <li>Rating: {gif.gif.rating}</li>
+              </ul>
             </div>
             <div className='detail-container__btn'>
               <Fav id={gif.id} />
