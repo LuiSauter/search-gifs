@@ -5,7 +5,7 @@ const Nav = styled.nav`
   img {
     cursor: pointer;
     width: 100px;
-    margin: 1.7rem 0;
+    margin: 0 0 1rem 0;
   }
 `
 export default Nav

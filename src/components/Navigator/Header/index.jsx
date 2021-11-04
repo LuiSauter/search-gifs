@@ -1,17 +1,22 @@
-import useUser from 'hooks/useUser'
-import { Link, useRoute } from 'wouter'
+import SettingToggle from '../../SettingToggle/SettingsToggle'
+import useUser from '../../../hooks/useUser'
+import { Link, useRoute, useLocation } from 'wouter'
 import Header from './Header'
 
 function HeaderLg () {
-  const { isLogged, logout } = useUser()
-  const [match] = useRoute('/login')
-
-  const handleClickLogout = () => logout()
+  const [location] = useLocation()
+  const { isLogged } = useUser()
+  const [match] = useRoute(location === '/login' ? '/login' : '/register')
 
   const renderLoginButton = ({ isLogged }) => {
     return isLogged
-      ? <button onClick={handleClickLogout}>Logout</button>
-      : <Link to='/login'>Login</Link>
+      ? <SettingToggle />
+      : (
+        <>
+          <Link to='/login'><i className='fas fa-sign-in-alt login' /> Login</Link>
+          <Link to='/register'><i className='fas fa-user-plus' /> Register</Link>
+        </>
+        )
   }
 
   const content = match
