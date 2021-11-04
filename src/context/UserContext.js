@@ -5,25 +5,34 @@ const Context = React.createContext({})
 
 export function UserContextProvider ({ children }) {
   const [favs, setFavs] = useState([])
-  const [jwt, setJWT] = useState(() => window.sessionStorage.getItem('jwt'))
+  const [JWT, setJWT] = useState(() => localStorage.getItem('jwt'))
+  const [email, setEmail] = useState(() => sessionStorage.getItem('signup'))
+  const [msg204, setMsg204] = useState(() => sessionStorage.getItem('signup204'))
 
   useEffect(() => {
-    if (!jwt) return setFavs([])
-    getFavs({ jwt }).then(fav => {
-      fav.map(f => {
-        const newFav = {
-          fav: f.fav,
-          id: f.id
-        }
-        return setFavs(prv => [...prv, newFav])
-      })
+    if (!JWT) return setFavs([])
+    getFavs({ JWT }).then(fav => {
+      if (fav) {
+        fav.map(f => {
+          const newFav = {
+            fav: f.fav,
+            title: f.title,
+            id: f.id
+          }
+          return setFavs(prv => [...prv, newFav])
+        })
+      }
     })
-  }, [jwt])
+  }, [JWT])
 
   return (
     <Context.Provider value={{
-      jwt,
       setJWT,
+      JWT,
+      email,
+      msg204,
+      setMsg204,
+      setEmail,
       favs,
       setFavs
     }}
