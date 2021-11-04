@@ -3,10 +3,11 @@ import { breakpoints } from 'styles/constant'
 
 const UlCategory = styled.div`
   position: sticky;
-  top: .8rem;
+  top: 50px;
   margin: 0 auto;
   margin-bottom: 1rem;
   width: 100%;
+  transition: all 1s;
   ul {
     margin: 0 auto;
     width: 100%;
