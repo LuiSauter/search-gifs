@@ -1,25 +1,26 @@
 import useUser from 'hooks/useUser'
-import { useEffect, useState } from 'react'
-import { useLocation } from 'wouter'
+import { useEffect } from 'react'
+import { Link, useLocation } from 'wouter'
+import { useForm } from 'react-hook-form'
 import LoginStyle from './LoginStyle'
 import svg from '../../assets/login.svg'
+import FormSC from 'components/Form/FormSC'
 
-function Login () {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const { login, isLogged, isLoginLoading, hasLoginError } = useUser()
+function Login ({ onLogin }) {
+  const { register, handleSubmit, formState: { errors } } = useForm()
+  const { login, isLogged, isLoginLoading, hasLoginError, email } = useUser()
   const [, navigate] = useLocation()
 
   useEffect(() => {
-    console.log(isLogged)
-    if (isLogged) navigate('/')
-  }, [isLogged, navigate])
+    if (isLogged) {
+      navigate('/')
+      // si existe el onLogin cerrar la modal
+      onLogin && onLogin()
+    }
+  }, [isLogged, navigate, onLogin])
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    login({ username, password })
-    // setPassword('')
-    // setUsername('')
+  const onSubmit = (data) => {
+    login(data)
   }
 
   return (
@@ -30,26 +31,32 @@ function Login () {
           <div className='login-hero'>
             <img src={svg} alt='' />
           </div>
-          <form onSubmit={handleSubmit}>
+          <FormSC onSubmit={handleSubmit(onSubmit)}>
             <h2>Login</h2>
             <label>
-              username<span>*</span>
+              Email <span>*</span>
+              {errors.email && <em>{errors.email.message}</em>}
               <input
-                type='text' placeholder='usename'
-                onChange={e => setUsername(e.target.value)}
-                value={username}
+                type='text' placeholder='Email address'
+                defaultValue={email}
+                autoFocus
+                {...register('email', { required: { value: true, message: 'Email is required' } })}
               />
             </label>
             <label>
-              password<span>*</span>
+              Password <span>*</span>
+              {errors.password && <em>{errors.password.message}</em>}
               <input
-                type='password' placeholder='password'
-                onChange={e => setPassword(e.target.value)}
-                value={password}
+                type='password' placeholder='Password'
+                {...register('password', {
+                  required: { value: true, message: 'Password is required' },
+                  minLength: { value: 8, message: 'Passwords must be at least 8 characters' }
+                })}
               />
             </label>
             <button className='login-btn'>Login</button>
-          </form>
+            <small>Not a member? <Link to='/register'> Sign Up now</Link></small>
+          </FormSC>
         </LoginStyle>}
       {
         hasLoginError && <strong>Credentials are invalid</strong>
