@@ -16,6 +16,7 @@ const ModalContainer = styled.div`
     display: flex;
     justify-content:center;
     align-items:center;
+    overflow: auto;
     .modal-content {
       border-radius: 10px;
       background-color: ${colors.background};
