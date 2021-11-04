@@ -1,3 +1,4 @@
 `api deploy heroku`
 
-repository: `asd/asd/sad/sad/casc.asdas`
+repository: `https://github.com/LuiSauter/gifs-api`
+deploy `heroku`
