@@ -3,4 +3,5 @@ export const ACTIONS = {
   UPDATE_RATING: '@update_rating'
 }
 
-export const ENDPOINT = 'http://localhost:4000/api'
+// export const ENDPOINT = 'https://mygifs.herokuapp.com/api'
+export const ENDPOINT = 'https://mygifs.herokuapp.com/api'
