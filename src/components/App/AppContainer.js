@@ -3,7 +3,7 @@ import { breakpoints, colors } from '../../styles/constant'
 
 const AppContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   margin: auto;
   color: ${colors.colorWhite};
   a {
