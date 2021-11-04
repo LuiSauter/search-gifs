@@ -2,7 +2,6 @@
 import ContentLoader from 'react-content-loader'
 
 const TrendsSkeleton = props => {
-  console.log(props)
   return (
     <ContentLoader
       height={200}
